@@ -10,6 +10,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProductsPage from "./pages/ProductsPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

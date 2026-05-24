@@ -24,7 +24,9 @@ function HomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/products");
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}api/products`,
+        );
         setProducts(data);
         setLoading(false);
       } catch (err) {

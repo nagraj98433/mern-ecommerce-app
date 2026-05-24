@@ -38,7 +38,7 @@ function ProductPage() {
     const fetchProduct = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/products/${id}`,
+          `${import.meta.env.VITE_API_URL}api/products/${id}`,
         );
         setProduct(data);
         setLoading(false);
@@ -82,11 +82,14 @@ function ProductPage() {
     }
 
     try {
-      await axios.post(`http://localhost:5000/api/products/${id}/reviews`, {
-        name: userInfo?.name || "Guest",
-        rating,
-        comment,
-      });
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}api/products/${id}/reviews`,
+        {
+          name: userInfo?.name || "Guest",
+          rating,
+          comment,
+        },
+      );
 
       toast.success("Review Added ✅");
 

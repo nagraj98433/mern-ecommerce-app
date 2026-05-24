@@ -17,7 +17,7 @@ function CheckoutPage() {
 
   const paymentHandler = async () => {
     const { data } = await axios.post(
-      "http://localhost:5000/api/payment/create-order",
+      `${import.meta.env.VITE_API_URL}api/payment/create-order`,
 
       {
         amount: totalPrice,
