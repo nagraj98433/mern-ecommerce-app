@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const navigate = useNavigate();
 
   const shippingAddress = useSelector((state) => state.cart.shippingAddress);
 
@@ -15,42 +17,12 @@ function CheckoutPage() {
 
   // razoerpay payment integration will be here
 
-  const paymentHandler = async () => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}api/payment/create-order`,
+  //
 
-      {
-        amount: totalPrice,
-      },
-    );
+  const paymentHandler = () => {
+    alert("Payment Successful");
 
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY,
-
-      amount: data.amount,
-
-      currency: data.currency,
-
-      name: "UrbanCart",
-
-      description: "Order Payment",
-
-      order_id: data.id,
-
-      handler: function (response) {
-        alert("Payment Successful");
-
-        console.log(response);
-      },
-
-      theme: {
-        color: "#000",
-      },
-    };
-
-    const razor = new window.Razorpay(options);
-
-    razor.open();
+    navigate("/success");
   };
 
   return (

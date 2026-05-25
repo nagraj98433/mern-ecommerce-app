@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ProductsPage from "./pages/ProductsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import Footer from "./components/Footer";
+import SuccessPage from "./pages/SuccessPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/shipping" element={<ShippingPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/success" element={<SuccessPage />} />
         </Route>
       </Routes>
       <Footer />
